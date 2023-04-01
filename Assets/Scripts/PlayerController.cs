@@ -27,13 +27,13 @@ public class PlayerController : MonoBehaviour
         if(movementInput != Vector2.zero){
             bool success = TryMove(movementInput);
 
-            if (!success)
+            if (!success && movementInput.x != 0)
             {
                 success = TryMove(new Vector2(movementInput.x, 0));
 
             }
 
-            if (!success)
+            if (!success && movementInput.y != 0)
             {
                 TryMove(new Vector2(0, movementInput.y));
             }
@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            animator.SetFloat("moveX", movementInput.x);
+            animator.SetFloat("moveY", movementInput.y);
             animator.SetBool("isMoving", false);
         }
 
