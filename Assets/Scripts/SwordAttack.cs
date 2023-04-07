@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
+    public Collider2D swordCollider;
+    public float damage = 3;
     Vector2 rightAttackOffSet;
-    Collider2D swordCollider;
     
     private void Start()
     {
-        swordCollider = GetComponent<Collider2D>();
         rightAttackOffSet = transform.position;
     }
 
@@ -17,24 +17,24 @@ public class SwordAttack : MonoBehaviour
     {
         swordCollider.enabled = true;
 
-        transform.position = rightAttackOffSet;
+        transform.localPosition = rightAttackOffSet;
     }
     public void AttackLeft()
     {
         swordCollider.enabled = true;
-        transform.position = new Vector2(rightAttackOffSet.x * -1, rightAttackOffSet.y);
+        transform.localPosition = new Vector2(rightAttackOffSet.x * -1, rightAttackOffSet.y);
 
     }
     public void AttackUp()
     {
         swordCollider.enabled = true;
-        transform.position = new Vector2(0, rightAttackOffSet.y * -2);
+        transform.localPosition = new Vector2(0, rightAttackOffSet.y * -2);
 
     }
     public void AttackDown()
     {
         swordCollider.enabled = true;
-        transform.position = new Vector2(0, rightAttackOffSet.y * 2);
+        transform.localPosition = new Vector2(0, rightAttackOffSet.y * 2);
 
     }
 
@@ -42,5 +42,20 @@ public class SwordAttack : MonoBehaviour
     {
         swordCollider.enabled = false;
 
+    }
+
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy") 
+        {
+            // Deal damage
+            Enemy enemy = collision.GetComponent<Enemy>();
+
+            if(enemy != null)
+            {
+                enemy.Health -= damage;
+            }
+        }
     }
 }

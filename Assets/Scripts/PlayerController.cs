@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     bool canMove = true;
+    private float lastX = 0;
+    private float lastY = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat("posX", movementInput.x);
                 animator.SetFloat("posY", movementInput.y);
                 animator.SetBool("isMoving", success);
+                lastX = movementInput.x;
+                lastY = movementInput.y;
             }
             else
             {
@@ -81,22 +85,28 @@ public class PlayerController : MonoBehaviour
     public void SwordAttack()
     {
         LockMovement();
-        if (movementInput.x > 0)
+        if (lastX > 0)
         {
             swordAttack.AttackRight();
         }
-        else if(movementInput.x < 0) 
+        else if(lastX < 0) 
         {
             swordAttack.AttackLeft();
         }
-        else if (movementInput.y > 0)
+        else if (lastY > 0)
         {
             swordAttack.AttackUp();
         }
-        else if(movementInput.y < 0)
+        else if(lastY < 0)
         {
             swordAttack.AttackDown();
         }
+    }
+
+    public void EndSwordAttack()
+    {
+        UnlockMovement();
+        swordAttack.StopAttack();
     }
 
     public void LockMovement()
