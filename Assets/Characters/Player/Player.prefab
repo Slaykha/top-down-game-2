@@ -288,4 +288,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 4461779611533063130}
-  damage: 3
+  damage: 1

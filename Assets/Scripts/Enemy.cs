@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float health = 1;
+    public float health = 3;
 
     Animator animator;
     public float Health
     {
         set
         {
+            animator.SetBool("isAlive", true);
+
+            if (value < health)
+            {
+                animator.SetTrigger("hit");
+            }
+
             health = value;
+
             if(health <= 0)
             {
-                Defeated();
+                animator.SetBool("isAlive", false);
+                animator.SetTrigger("Defeated");
             }
         }
         get
@@ -28,14 +37,8 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Defeated()
-    {
-        animator.SetTrigger("Defeated");
-    }
-
     public void RemoveEnemy()
     {
         Destroy(gameObject);
-
     }
 }

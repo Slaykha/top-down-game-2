@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
-    public float damage = 3;
+    public float damage = 1;
     Vector2 rightAttackOffSet;
     
     private void Start()
