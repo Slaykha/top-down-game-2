@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
     public float health = 3;
+    Rigidbody2D rb;
 
     Animator animator;
     public float Health
@@ -35,10 +37,23 @@ public class Enemy : MonoBehaviour
     public void Start()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void RemoveEnemy()
     {
         Destroy(gameObject);
+    }
+
+    public void OnHit(float damage, Vector2 knockback)
+    {
+        Health -= damage;
+
+        rb.AddForce(knockback);
+    }
+
+    public void OnHit(float damage)
+    {
+        Health -= damage;
     }
 }
