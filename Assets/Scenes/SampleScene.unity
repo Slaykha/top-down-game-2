@@ -4974,12 +4974,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1140215535679009175, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
+      propertyPath: m_LinearDrag
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140215535679009175, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
       propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140215535679009175, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
+      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4461779611533063130, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6171387281640833757, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
+      propertyPath: moveSpeed
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
