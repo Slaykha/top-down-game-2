@@ -54,7 +54,7 @@ public class SwordAttack : MonoBehaviour
         {
             Vector3 parentPosition = gameObject.GetComponent<Transform>().position;
 
-            Vector2 direction = (Vector2)(parentPosition - collision.gameObject.transform.position).normalized;
+            Vector2 direction = (Vector2)(collision.gameObject.transform.position - parentPosition).normalized;
             Vector2 knockback = direction * knockbackForce;
 
             damagableObject.OnHit(damage, knockback);   
