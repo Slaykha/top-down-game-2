@@ -319,6 +319,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &279390880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 388624082682062076, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
+  m_PrefabInstance: {fileID: 388624081587653265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &377266495
 GameObject:
   m_ObjectHideFlags: 0
@@ -4759,6 +4764,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 388624082682062078, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
   m_PrefabInstance: {fileID: 388624081587653265}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1684722085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279390880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d533460d1606514fb1fc394a3ad8d50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableSimulation: 0
+  health: 3
+  _targatable: 1
 --- !u!1 &2048282069 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7247824916810783269, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
@@ -4993,7 +5013,8 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 700
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2643313418572527255, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ad0a502f13f01d74eb23a607d570bc93, type: 3}
 --- !u!1001 &3925010246171572024
 PrefabInstance:

@@ -3,57 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Enemy : MonoBehaviour, IDamagable
+public class Enemy : MonoBehaviour
 {
-    public float health = 3;
-    Rigidbody2D rb;
 
-    Animator animator;
-    public float Health
+    public float damage = 1;
+
+    void OnCollisionEnter2D(Collision2D col)
     {
-        set
+    IDamagable damageable = col.collider.GetComponent<IDamagable>();
+
+        if(damageable != null)
         {
-            animator.SetBool("isAlive", true);
-
-            if (value < health)
-            {
-                animator.SetTrigger("hit");
-            }
-
-            health = value;
-
-            if(health <= 0)
-            {
-                animator.SetBool("isAlive", false);
-                animator.SetTrigger("Defeated");
-            }
+            damageable.OnHit(damage);
         }
-        get
-        {
-            return health;
-        }
-    }
-
-    public void Start()
-    {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    public void RemoveEnemy()
-    {
-        Destroy(gameObject);
-    }
-
-    public void OnHit(float damage, Vector2 knockback)
-    {
-        Health -= damage;
-
-        rb.AddForce(knockback);
-    }
-
-    public void OnHit(float damage)
-    {
-        Health -= damage;
     }
 }
