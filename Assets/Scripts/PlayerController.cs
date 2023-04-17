@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     bool isMoving = false;
     private float lastX = 0;
     private float lastY = 0;
+    bool isAlive = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if (canMove && movementInput != Vector2.zero)
+        isAlive = animator.GetBool("isAlive");
+
+        if (isAlive && canMove && movementInput != Vector2.zero)
         {
             rBody.velocity = Vector2.ClampMagnitude(rBody.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
 

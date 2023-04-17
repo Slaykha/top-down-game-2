@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     {
     IDamagable damageable = col.collider.GetComponent<IDamagable>();
 
-        if(damageable != null)
+        if(damageable != null && col.collider.tag == "Player")
         {
             damageable.OnHit(damage);
         }
