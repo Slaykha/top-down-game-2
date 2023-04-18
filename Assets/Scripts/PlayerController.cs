@@ -7,11 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     public SwordAttack swordAttack;
 
-    public float moveSpeed = 700f;
+    public float moveSpeed = 2000f;
     public float maxSpeed = 2.2f;
     public float idleFriction = 0.9f;
     public float collisionOffSet = 0.01f;
-    public ContactFilter2D movementFilter;
+    public ContactFilter2D movementFilter;  
 
     Vector2 movementInput;
     SpriteRenderer spriteRenderer;
@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
 
         if (isAlive && canMove && movementInput != Vector2.zero)
         {
-            rBody.velocity = Vector2.ClampMagnitude(rBody.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
+            //rBody.velocity = Vector2.ClampMagnitude(rBody.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
+
+            rBody.AddForce(movementInput * moveSpeed * Time.deltaTime);
 
             isMoving = true;
 

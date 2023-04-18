@@ -70,7 +70,7 @@ public class DamageableCharacter : MonoBehaviour, IDamagable
     {
         Health -= damage;
 
-        rb.AddForce(knockback);
+        rb.AddForce(knockback, ForceMode2D.Impulse);
     }
 
     public void OnHit(float damage)

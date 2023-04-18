@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
-    public float knockbackForce = 5000f;
+    public float knockbackForce = 500f;
     public float damage = 1;
     Vector2 rightAttackOffSet;
     
@@ -50,11 +50,11 @@ public class SwordAttack : MonoBehaviour
     {
         IDamagable damagableObject = collision.GetComponent<IDamagable>();
 
-        if (damagableObject != null) 
+        if (damagableObject != null)
         {
-            Vector3 parentPosition = gameObject.GetComponent<Transform>().position;
+            Vector3 parentPosition = transform.parent.position;
 
-            Vector2 direction = (Vector2)(collision.gameObject.transform.position - parentPosition).normalized;
+            Vector2 direction = (collision.transform.position - parentPosition).normalized;
             Vector2 knockback = direction * knockbackForce;
 
             damagableObject.OnHit(damage, knockback);   
